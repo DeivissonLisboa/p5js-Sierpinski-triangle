@@ -30,7 +30,7 @@ function draw() {
     translate(0, height) // change coordenates system to left bottom
     scale(1, -1)
 
-    strokeWeight(5)
+    strokeWeight(1)
 
     stroke(255, 255, 0)
     triangle.forEach((p) => {
