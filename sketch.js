@@ -1,6 +1,7 @@
 const triangle = []
 let points = []
-let max = 0
+let max
+let btn
 
 function setup() {
   createCanvas(500, 500)
@@ -13,6 +14,12 @@ function setup() {
   points.push(pointInsideTriangle())
 
   max = document.querySelector(".input").value
+  btn = document.querySelector(".btn")
+
+  btn.addEventListener("click", () => {
+    max = document.querySelector(".input").value
+    points = [pointInsideTriangle()]
+  })
 }
 
 function draw() {
