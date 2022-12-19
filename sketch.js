@@ -1,7 +1,8 @@
 const triangle = []
-let points = []
+let curr_point
 let max
 let btn
+let counter = 0
 
 function setup() {
   createCanvas(500, 500)
@@ -11,39 +12,44 @@ function setup() {
   triangle.push(createVector(width / 2, height - 10))
 
   // First random point inside the triangle
-  points.push(pointInsideTriangle())
+  curr_point = pointInsideTriangle()
 
   max = document.querySelector(".input").value
   btn = document.querySelector(".btn")
 
   btn.addEventListener("click", () => {
+    background(255)
+    counter = 0
     max = document.querySelector(".input").value
-    points = [pointInsideTriangle()]
+    curr_point = pointInsideTriangle()
   })
 }
 
 function draw() {
-  translate(0, height) // change coordenates system to left bottom
-  scale(1, -1)
+  if (counter < max) {
+    translate(0, height) // change coordenates system to left bottom
+    scale(1, -1)
 
-  background(200)
-  strokeWeight(5)
+    strokeWeight(5)
 
-  stroke(255, 255, 0)
-  triangle.forEach((p) => {
-    point(p.x, p.y)
-  })
+    stroke(255, 255, 0)
+    triangle.forEach((p) => {
+      point(p.x, p.y)
+    })
 
-  stroke(0, 100, 0)
-  points.forEach((p) => {
-    point(p.x, p.y)
-  })
+    stroke(0, 100, 0)
+    for (i = 0; i < 100; i++) {
+      if (i >= max) {
+        break
+      }
 
-  let next = getNextPoint(points[points.length - 1])
-  points.push(next)
+      point(curr_point.x, curr_point.y)
 
-  if (points.length > max) {
-    points.splice(-1, 1)
+      let next = getNextPoint(curr_point)
+      curr_point = next
+
+      counter++
+    }
   }
 }
 
