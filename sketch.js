@@ -42,7 +42,7 @@ function draw() {
   let next = getNextPoint(points[points.length - 1])
   points.push(next)
 
-  if (points.length >= max) {
+  if (points.length > max) {
     points.splice(-1, 1)
   }
 }
