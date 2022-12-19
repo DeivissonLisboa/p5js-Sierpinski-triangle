@@ -1,6 +1,6 @@
 const triangle = []
 let points = []
-const max = 10000
+let max = 0
 
 function setup() {
   createCanvas(500, 500)
@@ -11,6 +11,8 @@ function setup() {
 
   // First random point inside the triangle
   points.push(pointInsideTriangle())
+
+  max = document.querySelector(".input").value
 }
 
 function draw() {
@@ -36,8 +38,6 @@ function draw() {
   if (points.length >= max) {
     points.splice(-1, 1)
   }
-
-  console.log(points.length)
 }
 
 function pointInsideTriangle() {
