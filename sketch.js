@@ -34,7 +34,7 @@ function draw() {
     point(p.x, p.y)
   })
 
-  stroke(0)
+  stroke(0, 100, 0)
   points.forEach((p) => {
     point(p.x, p.y)
   })
